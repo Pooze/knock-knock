@@ -1,0 +1,23 @@
+{
+  "name": "knock-knock",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pooze/knock-knock.git"
+  },
+  "author": "Daniel Andersson <d.andersson92@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Pooze/knock-knock/issues"
+  },
+  "homepage": "https://github.com/Pooze/knock-knock#readme",
+  "dependencies": {
+    "koa": "^2.0.0"
+  }
+}
