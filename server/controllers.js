@@ -32,6 +32,7 @@ module.exports = function(PAGE_TOKEN, VERIFY_TOKEN, logic)
 
   return {
     react: ctx => {
+        console.log('Reaction call!');
         const promises = ctx.request.body.entry
         .map(entry => {
             return entry.messaging
@@ -46,10 +47,13 @@ module.exports = function(PAGE_TOKEN, VERIFY_TOKEN, logic)
         .catch(_ => ctx.status = 500);
     },
     verify: ctx => {
+        console.log('Verification');
         const query = querystring.parse(ctx.request.url);
         if (query['hub.verify_token'] === VERIFY_TOKEN) {
+            console.log('\t PASSED');
             ctx.body = query['hub.challenge'];
         } else {
+            console.log('\t FAILED');
             ctx.body = 'Bad verify_token';
         }
     },
