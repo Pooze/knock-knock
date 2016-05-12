@@ -4,7 +4,7 @@ const bodyparser = require('koa-bodyparser');
 
 module.exports = function(controllers) {
     router.use(bodyparser());
-    router.get('/webhook', controllers.verify);
+    router.get('/', controllers.verify);
     router.post('/', controllers.react);
     router.get('/test', controllers.hello);
     return router.routes();
