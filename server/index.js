@@ -8,18 +8,25 @@ const bot = require('../logic/bot');
 
 
 // logger
-
-server.use(function *(next){
-	const start = new Date;
-	yield next;
-	const ms = new Date - start;
-	console.log('%s %s - %s', this.method, this.url, ms);
+server.use((ctx, next) => {
+    const start = new Date();
+    return next().then(() => {
+        const ms = new Date() - start;
+        console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
+    });
 });
+
 
 // response
+const controllers = require('./controllers')(
+  process.env.PAGE_TOKEN,
+  process.env.VERIFY_TOKEN,
+  bot
+);
+const routes = require('./routes')(controllers);
 
-server.use(function *(){
-  this.body = 'Hello World';
-});
 
-server.listen(process.env.PORT || 3000);
+server.use(routes);
+
+server.listen(process.env.PORT || 3000, () => console.log('Server started on port 3000'));
+

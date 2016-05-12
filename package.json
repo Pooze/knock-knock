@@ -18,6 +18,9 @@
   },
   "homepage": "https://github.com/Pooze/knock-knock#readme",
   "dependencies": {
-    "koa": "^2.0.0"
+    "koa": "^2.0.0",
+    "koa-bodyparser": "^3.1.0",
+    "koa-router": "^7.0.1",
+    "request": "^2.72.0"
   }
 }
