@@ -13,7 +13,7 @@ function echo(event) {
 }
 
 function backward(event) {
-    if (typeof event.message !== 'undefined' && event.message !== null && event.timestamp !== null) {
+    if (typeof event.message !== 'undefined' && event.message !== null && event.timestamp !== null && typeof(event.message.text) == 'string') {
         return Promise.resolve({
             messageText: event.message.text.split("").reverse().join(""),
             senderId: event.sender.id,
